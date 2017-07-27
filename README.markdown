@@ -420,7 +420,7 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
+For functions with ~~long signatures, add line breaks at appropriate points~~ three or more parameters, add line break for each parameter and an indent appropriately:
 
 ```swift
 func reticulateSplines(spline: [Double], adjustmentFactor: Double,
@@ -949,7 +949,96 @@ Smiley faces are a very prominent style feature of the [raywenderlich.com](https
 ```
 :)
 ```  
+# GuestCenter Style Guide
+## Prefixes
 
+Use `GC` instead of `OT` when prefixing.
+
+**Preferred:**
+```swift
+class GCButton
+```
+
+**Not Preferred:**
+```swift
+class OTButton
+``` 
+## Dictionary Naming
+
+The name of a dictionary should be `(value)By(key)`, with value in plural form.
+
+**Preferred:**
+```swift
+let colorsByStaffID = {}
+```
+
+**Not Preferred:**
+```swift
+let colorsDict = {}
+``` 
+## Guard Statements
+
+Avoid one-line guard statements.
+
+**Preferred:**
+
+```swift
+guard let restaurantID = restaurantID else {
+    return
+}
+```
+
+**Not Preferred:**
+```swift
+guard let restaurantID = restaurantID else { return }
+``` 
+## Comments: 
+
+#### Public Functions
+
+Use `control` + `alt` + `/` to generate comments for public functions and explain what the input shold be.
+
+**Preferred:**
+```swift
+/// Block tables
+    ///
+    /// - Parameters:
+    ///   - tableNames: Table names to block
+    ///   - dates: Date range for which to block tables between. The default parameter value defaults to now.
+    static func block(tables: [String], between dates: DateRange = DateRange()) {
+        ...
+    }
+```
+
+**Not Preferred:**
+```swift
+    /// Block Tables
+    static func block(tables: [String], between dates: DateRange = DateRange()) {
+        ...
+    }
+```
+
+#### Private functions
+
+Comments for private functions can be more succint, there is no need for `control` + `alt` + `/`. Wrap the comment with `/*` and `*/`.
+
+**Preferred:**
+```swift
+/* Updates UILabel colors
+*/
+    func updateColors() {
+        ...
+    }
+```
+
+**Not Preferred:**
+```swift
+/// Updates UILabel colors
+    func updateColors() {
+        ...
+    }
+ ```
+ 
 ## References
 
 * [The Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
