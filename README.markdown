@@ -996,7 +996,7 @@ guard let restaurantID = restaurantID else { return }
 
 #### Public Functions
 
-Use `control` + `alt` + `/` to generate comments for public functions and explain what the input shold be.
+Use `control` + `alt` + `/` to generate comments for public functions and explain what the input should be.
 
 **Preferred:**
 ```swift
@@ -1024,8 +1024,8 @@ Comments for private functions can be more succint, there is no need for `contro
 
 **Preferred:**
 ```swift
-/* Updates UILabel colors
-*/
+/*  Updates UIColors
+ */
     func updateColors() {
         ...
     }
