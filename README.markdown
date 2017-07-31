@@ -995,7 +995,7 @@ guard let restaurantID = restaurantID else {
 ```swift
 guard let restaurantID = restaurantID else { return }
 ``` 
-## Comments: 
+## Comments:
 
 #### Public Functions
 
@@ -1039,6 +1039,26 @@ Comments for private functions can be more succint, there is no need for `contro
 /// Updates UILabel colors
     func updateColors() {
         ...
+    }
+ ```
+ 
+ ** IBOutlet Configration
+ 
+ Configure the UI of IBOutlets in `didSet` instead of `viewDidLoad`
+ 
+ **Preferred:**
+```swift
+    @IBOutlet weak var doneButton: UIButton! {
+        didSet {
+            doneButton.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+```
+
+**Not Preferred:**
+```swift
+    override func viewDidLoad() {
+        doneButton.layer.borderColor = UIColor.white.cgColor
     }
  ```
  
