@@ -3,7 +3,7 @@
 
 This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.
 
-Our overarching goals are clarity, consistency and brevity, in that order.
+Our overarching goals are **clarity, consistency and brevity**, in that order.
 
 ## Table of Contents
 
@@ -48,6 +48,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [References](#references)
+* **[GuestCenter Style Guide](#guestcenter-style-guide)**
 
 
 ## Correctness
@@ -74,7 +75,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
   - protocols that describe _what something is_ should read as nouns
   - protocols that describe _a capability_ should end in _-able_ or _-ible_
 - using terms that don't surprise experts or confuse beginners
-- generally avoiding abbreviations
+- **generally avoiding abbreviations**
 - using precedent for names
 - preferring methods and properties to free functions
 - casing acronyms and initialisms uniformly up or down
@@ -111,7 +112,7 @@ let myClass = MyModule.UsefulClass()
 
 ### Delegates
 
-When creating custom delegate methods, an unnamed first parameter should be the delegate source. (UIKit contains numerous examples of this.)
+**When creating custom delegate methods, an unnamed first parameter should be the delegate source.** (UIKit contains numerous examples of this.)
 
 **Preferred:**
 ```swift
@@ -127,7 +128,7 @@ func namePickerShouldReload() -> Bool
 
 ### Use Type Inferred Context
 
-Use compiler inferred context to write shorter, clear code.  (Also see [Type Inference](#type-inference).)
+**Use compiler inferred context to write shorter, clear code.**  (Also see [Type Inference](#type-inference).)
 
 **Preferred:**
 ```swift
@@ -179,11 +180,11 @@ let colour = "red"
 
 ## Code Organization
 
-Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+**Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.**
 
 ### Protocol Conformance
 
-In particular, **when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods.** This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
+In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
 **Preferred:**
 ```swift
@@ -250,11 +251,11 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 
 ## Spacing
 
-* Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode and in the Project settings as shown below:
+* *Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping.* Be sure to set this preference in Xcode and in the Project settings as shown below:
 
 ![Xcode indent settings](screens/indentation.png)
 
-* **Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.**
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 * Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
 
 **Preferred:**
@@ -277,7 +278,7 @@ else {
 }
 ```
 
-* **There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.**
+* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
 
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
 
@@ -378,7 +379,7 @@ Use self only when required by the compiler (in `@escaping` closures, or in init
 
 ### Computed Properties
 
-For conciseness, **if a computed property is read-only, omit the get clause.**The get clause is required only when a set clause is provided.
+For conciseness, **if a computed property is read-only, omit the get clause.** The get clause is required only when a set clause is provided.
 
 **Preferred:**
 ```swift
@@ -420,13 +421,15 @@ func reticulateSplines(spline: [Double]) -> Bool {
 }
 ```
 
-For functions with ~~long signatures, add line breaks at appropriate points~~ three or more parameters, add line break for each parameter and an indent appropriately:
+**For functions with ~~long signatures, add line breaks at appropriate points~~ three or more parameters, add line break for each parameter and an indent appropriately:**
 
 ```swift
-func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
-  // reticulate code goes here
-}
+    func reticulateSplines(spline: [Double],
+                           adjustmentFactor: Double,
+                           translateConstant: Int,
+                           comment: String) -> Bool {
+        // reticulate code goes here
+    }
 ```
 
 ## Closure Expressions
@@ -480,7 +483,7 @@ let value = numbers
 
 ## Types
 
-**Always use Swift's native types when available. **Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
+**Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.**
 
 **Preferred:**
 ```swift
@@ -532,9 +535,9 @@ Static methods and type properties work similarly to global functions and global
 
 Declare variables and function return types as optional with `?` where a nil value is acceptable.
 
-Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.
+Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`.*
 
-When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
+**When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:**
 
 ```swift
 self.textContainer?.textLabel?.setNeedsDisplay()
@@ -550,7 +553,7 @@ if let textContainer = self.textContainer {
 
 When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
 
-For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.
+**For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.**
 
 **Preferred:**
 ```swift
@@ -577,7 +580,7 @@ if let unwrappedSubview = optionalSubview {
 
 ### Lazy Initialization
 
-Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
+**Consider using lazy initialization for finer grain control over object lifetime.** This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
 
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
@@ -598,7 +601,7 @@ private func makeLocationManager() -> CLLocationManager {
 
 ### Type Inference
 
-Prefer compact code and let the compiler infer the type for constants or variables of single instances. Type inference is also appropriate for small (non-empty) arrays and dictionaries. When required, specify the specific type such as `CGFloat` or `Int16`.
+**Prefer compact code and let the compiler infer the type for constants or variables of single instances.** Type inference is also appropriate for small (non-empty) arrays and dictionaries. When required, specify the specific type such as `CGFloat` or `Int16`.
 
 **Preferred:**
 ```swift
@@ -617,7 +620,7 @@ let names = [String]()
 
 #### Type Annotation for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+**For empty arrays and dictionaries, use type annotation.** (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
 
 **Preferred:**
 ```swift
@@ -636,7 +639,7 @@ var lookup = [String: Int]()
 
 ### Syntactic Sugar
 
-Prefer the shortcut versions of type declarations over the full generics syntax.
+**Prefer the shortcut versions of type declarations over the full generics syntax.**
 
 **Preferred:**
 ```swift
@@ -715,7 +718,7 @@ resource.request().onComplete { [weak self] response in
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. Prefer `private` to `fileprivate` when possible. Using extensions may require you to use `fileprivate`.
+Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` and `fileprivate` appropriately, however, adds clarity and promotes encapsulation. **Prefer `private` to `fileprivate` when possible.** Using extensions may require you to use `fileprivate`.
 
 Only explicitly use `open`, `public`, and `internal` when you require a full access control specification.
 
@@ -741,7 +744,7 @@ class TimeMachine {
 
 ## Control Flow
 
-Prefer the `for-in` style of `for` loop over the `while-condition-increment` style.
+**Prefer the `for-in` style of `for` loop over the `while-condition-increment` style.**
 
 **Preferred:**
 ```swift
@@ -752,7 +755,7 @@ for _ in 0..<3 {
 for (index, person) in attendeeList.enumerated() {
   print("\(person) is at position #\(index)")
 }
-
+f
 for index in stride(from: 0, to: items.count, by: 2) {
   print(index)
 }
@@ -848,11 +851,11 @@ if let number1 = number1 {
 
 ### Failing Guards
 
-Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
+**Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. **If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
 
 ## Semicolons
 
-Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
+**Swift does not require a semicolon after each statement in your code.** They are only required if you wish to combine multiple statements on a single line.
 
 Do not write multiple statements on a single line separated with semicolons.
 
@@ -870,7 +873,7 @@ let swift = "not a scripting language";
 
 ## Parentheses
 
-Parentheses around conditionals are not required and should be omitted.
+**Parentheses around conditionals are not required and should be omitted.**
 
 **Preferred:**
 ```swift
@@ -992,7 +995,7 @@ guard let restaurantID = restaurantID else {
 ```swift
 guard let restaurantID = restaurantID else { return }
 ``` 
-## Comments
+## Comments: 
 
 #### Public Functions
 
@@ -1039,26 +1042,6 @@ Comments for private functions can be more succint, there is no need for `contro
     }
  ```
  
-## IBOutlet Configuration 
-
-Configure the UI of IBOutlets through `didSet` instead of `viewDidLoad`. 
-
-**Preferred:**
-```swift
-@IBOutlet weak var doneButton: UIButton! {
-        didSet {
-            doneButton.layer.borderColor = UIColor.white.cgColor
-        }
-    }
-```
-
-**Not Preferred:**
-```swift
-override func viewDidLoad() {
-        doneButton.layer.borderColor = UIColor.white.cgColor
-    }
- ```
-
 ## References
 
 * [The Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
