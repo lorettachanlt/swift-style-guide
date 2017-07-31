@@ -1042,7 +1042,7 @@ Comments for private functions can be more succint, there is no need for `contro
     }
  ```
  
- ** IBOutlet Configration
+## IBOutlet Configration
  
  Configure the UI of IBOutlets in `didSet` instead of `viewDidLoad`
  
