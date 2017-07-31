@@ -183,7 +183,7 @@ Use extensions to organize your code into logical blocks of functionality. Each 
 
 ### Protocol Conformance
 
-In particular, when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
+In particular, **when adding protocol conformance to a model, prefer adding a separate extension for the protocol methods.** This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.
 
 **Preferred:**
 ```swift
@@ -254,7 +254,7 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 
 ![Xcode indent settings](screens/indentation.png)
 
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* **Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.**
 * Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.
 
 **Preferred:**
@@ -277,7 +277,7 @@ else {
 }
 ```
 
-* There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.
+* **There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.**
 
 * Colons always have no space on the left and one space on the right. Exceptions are the ternary operator `? :`, empty dictionary `[:]` and `#selector` syntax for unnamed parameters `(_:)`.
 
@@ -303,7 +303,7 @@ class TestDatabase : Database {
 
 ## Comments
 
-When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
+**When they are needed, use comments to explain **why** a particular piece of code does something.** Comments must be kept up-to-date or deleted.
 
 Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
 
@@ -371,14 +371,14 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
+For conciseness, **avoid using `self`** since Swift does not require it to access an object's properties or invoke its methods.
 
 Use self only when required by the compiler (in `@escaping` closures, or in initializers to disambiguate properties from arguments). In other words, if it compiles without `self` then omit it.
 
 
 ### Computed Properties
 
-For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.
+For conciseness, **if a computed property is read-only, omit the get clause.**The get clause is required only when a set clause is provided.
 
 **Preferred:**
 ```swift
@@ -480,7 +480,7 @@ let value = numbers
 
 ## Types
 
-Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
+**Always use Swift's native types when available. **Swift offers bridging to Objective-C so you can still use the full set of methods as needed.
 
 **Preferred:**
 ```swift
@@ -992,7 +992,7 @@ guard let restaurantID = restaurantID else {
 ```swift
 guard let restaurantID = restaurantID else { return }
 ``` 
-## Comments: 
+## Comments
 
 #### Public Functions
 
@@ -1039,6 +1039,26 @@ Comments for private functions can be more succint, there is no need for `contro
     }
  ```
  
+## IBOutlet Configuration 
+
+Configure the UI of IBOutlets through `didSet` instead of `viewDidLoad`. 
+
+**Preferred:**
+```swift
+@IBOutlet weak var doneButton: UIButton! {
+        didSet {
+            doneButton.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+```
+
+**Not Preferred:**
+```swift
+override func viewDidLoad() {
+        doneButton.layer.borderColor = UIColor.white.cgColor
+    }
+ ```
+
 ## References
 
 * [The Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
