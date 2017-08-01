@@ -1004,21 +1004,21 @@ Use `control` + `alt` + `/` to generate comments for public functions and explai
 **Preferred:**
 ```swift
 /// Block tables
-    ///
-    /// - Parameters:
-    ///   - tableNames: Table names to block
-    ///   - dates: Date range for which to block tables between. The default parameter value defaults to now.
-    static func block(tables: [String], between dates: DateRange = DateRange()) {
-        ...
-    }
+///
+/// - Parameters:
+///   - tableNames: Table names to block
+///   - dates: Date range for which to block tables between. The default parameter value defaults to now.
+static func block(tables: [String], between dates: DateRange = DateRange()) {
+    ...
+}
 ```
 
 **Not Preferred:**
 ```swift
-    /// Block Tables
-    static func block(tables: [String], between dates: DateRange = DateRange()) {
-        ...
-    }
+/// Block Tables
+static func block(tables: [String], between dates: DateRange = DateRange()) {
+    ...
+}
 ```
 
 #### Private functions
@@ -1027,19 +1027,20 @@ Comments for private functions can be more succint, there is no need for `contro
 
 **Preferred:**
 ```swift
-/*  Updates UIColors
+/**
+ Updates colors
  */
-    func updateColors() {
-        ...
-    }
+func updateColors() {
+    ...
+}
 ```
 
 **Not Preferred:**
 ```swift
 /// Updates UILabel colors
-    func updateColors() {
-        ...
-    }
+func updateColors() {
+    ...
+}
  ```
  
 ## IBOutlet Configration
@@ -1048,18 +1049,18 @@ Comments for private functions can be more succint, there is no need for `contro
  
  **Preferred:**
 ```swift
-    @IBOutlet weak var doneButton: UIButton! {
-        didSet {
-            doneButton.layer.borderColor = UIColor.white.cgColor
-        }
+@IBOutlet weak var doneButton: UIButton! {
+    didSet {
+       doneButton.layer.borderColor = UIColor.white.cgColor
     }
+}
 ```
 
 **Not Preferred:**
 ```swift
-    override func viewDidLoad() {
-        doneButton.layer.borderColor = UIColor.white.cgColor
-    }
+override func viewDidLoad() {
+    doneButton.layer.borderColor = UIColor.white.cgColor
+}
  ```
  
 ## References
